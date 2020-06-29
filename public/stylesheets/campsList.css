@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Krona+One&family=Roboto&family=Ubuntu:wght@500&family=Ropa+Sans&display=swap');
+
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* NavBar Starts */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25em 10em 0.25em 7em;
+
+    background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
+}
+
+.brand a {  /* Brand Name */
+    text-decoration: none;
+    font-family: "Caveat", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.brand {
+    margin: 0;
+}
+
+.links li {
+    font-family: "Ropa Sans", sans-serif;   
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+.links a:hover {
+    opacity: 0.6;
+}
+/* NavBar Ends */
+
+
+/* The Image With Heading */
+.jumbotron {
+    display: flex;
+    align-items: center;
+
+    background: url("/images/Campgrounds_Jumbotron.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 325px;
+}
+
+.heading h3, 
+.heading h1 {
+    font-family: "Krona One", sans-serif;
+    color: #E8D5D5;
+    margin: 0;
+}
+
+.heading { 
+    margin: 0 0 4% 15%;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.heading h1 {
+    font-size: max(4vw, 40px);
+    text-shadow: 10px 0 0 #c1bd4986;
+}
+
+.heading h3 {
+    font-size: max(2vw, 20px);
+}
+
+.heading *::selection {
+    background-color: #C1BD49;
+}
+/* Jumobotron Ends */
+
+
+/* Campgrounds List */
+.lists {
+    padding: 5rem 15%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    column-gap: 5%;
+    row-gap: 7%;
+}
+
+/* Campground Card Starts */
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    padding: 6%;
+    transition: transform 300ms linear,
+                background-color 300ms linear;
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+.info { /* "Name, Cost, Rating" Info Div */
+    margin: 15px 8% 0 8%;
+}
+
+.name-cost {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: "Bangers", sans-serif;
+    font-size: 1.5rem;
+    color: #782525;
+}
+
+.rating {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    color: #5e5e5e;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #792f3b5b;
+}
+/* Campground Card Ends */
+/* Campgrounds List Ends */

@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/campsList.css">
+    </head>
+    <body>
+
+    <%- include("partials/navbar") %> 
+
+    <div class="jumbotron">
+        <div class="heading">
+            <h3>DESTINATION</h3>
+            <h1>CAMPGROUND</h1>
+        </div>
+    </div>
+
+    <div class="lists">
+        <% for (var i = 0; i < grounds.length; i++) { %>
+            <div class="card">
+                <div class="image" style="background: url('<%= grounds[i].image %>');"></div> 
+                <div class="info">
+                    <div class="name-cost">
+                        <span><%= grounds[i].name %></span>
+                        <span>$<%= grounds[i].cost %></span>
+                    </div>
+                    <span class="rating"><%= grounds[i].rating %> Stars</span>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    
+<%- include("partials/footer") %>
