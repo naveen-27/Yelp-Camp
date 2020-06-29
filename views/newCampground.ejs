@@ -1,21 +1,32 @@
-<%- include("partials/header") %> 
+    <%- include("partials/header") %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/add-campground.css">
 </head>
 <body>
 
-    <h1>Add a new CampGround!</h1>
+    <%- include("partials/navbar") %> 
 
-    <form action="\campgrounds" method="POST">
-        <label for="CGname"> Campground Name <sup>*</sup> : 
-            <input type="text" name="name" id="CGname" required>
-        </label>
+    <div class="new-cg">
+        <h1>ADD CAMPGROUND</h1>
 
-        <label for="imageUrl"> Campground Image <sup>*</sup> : 
-            <input type="text" name="image" id="imageUrl" required>
-        </label>
+        <form action="\campgrounds" method="POST">
+            <label for="CGname"> Campground Name 
+                <input type="text" name="name" id="CGname" required>
+            </label>
 
-        <input type="submit">
-    </form>
+            <label for="imageUrl"> Campground Image
+                <input type="text" name="image" id="imageUrl" required>
+            </label>
 
-    <a href="/campgrounds">Back</a>
+            <label for="rate"> Price
+                <input type="text" name="cost" id="rate" required>
+            </label>
+
+            <label for="stars"> Rating
+                <input type="text" name="rating" id="stars" required>
+            </label>
+
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
 
 <%- include("partials/footer") %> 

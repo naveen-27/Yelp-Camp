@@ -1,6 +1,7 @@
 <%- include("partials/header") %>
     
     <link rel="stylesheet" type="text/css" href="/stylesheets/campsList.css">
+    
     </head>
     <body>
 
@@ -14,6 +15,9 @@
     </div>
 
     <div class="lists">
+        //
+        //Generate New card for each campground
+        //
         <% for (var i = 0; i < grounds.length; i++) { %>
             <div class="card">
                 <div class="image" style="background: url('<%= grounds[i].image %>');"></div> 
