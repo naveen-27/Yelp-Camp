@@ -19,16 +19,18 @@
         <!-- Add new card for each camp -->
 
         <% for (var i = 0; i < grounds.length; i++) { %>
-            <div class="card">
-                <div class="image" style="background: url('<%= grounds[i].image %>');"></div> 
-                <div class="info">
-                    <div class="name-cost">
-                        <span><%= grounds[i].name %></span>
-                        <span>$<%= grounds[i].cost %></span>
+            <a href="/campgrounds/<%= grounds[i]._id %>">
+                <div class="card">
+                    <img class="image" src="<%= grounds[i].image %>" alt="Campground Image">
+                    <div class="info">
+                        <div class="name-cost">
+                            <span><%= grounds[i].name %></span>
+                            <span>$<%= grounds[i].cost %></span>
+                        </div>
+                        <span class="rating"><%= grounds[i].rating %> Stars</span>
                     </div>
-                    <span class="rating"><%= grounds[i].rating %> Stars</span>
                 </div>
-            </div>
+            </a>
         <% } %>
     </div>
     

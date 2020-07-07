@@ -7,7 +7,7 @@
             <li><a href="#">SIGN&nbsp;IN</a></li>
             <li><a href="#">SIGN&nbsp;UP</a></li>
         </ul>
-        <span class="expand">&gt;</span>
+        <span class="expand"><i class="align justify icon small"></i></span>
     </nav>
     <ul class="collapse-links">
         <li><a href="/campgrounds/new">ADD&nbsp;CAMP</a></li>
@@ -16,9 +16,4 @@
         <li><a href="#">SIGN&nbsp;UP</a></li>
     </ul>
 
-    <script>
-        var menu = document.querySelector(".expand")
-        menu.addEventListener("click", () => {
-            document.querySelector(".collapse-links").classList.toggle("show");
-        });
-    </script>
+    <script src="/scripts/controller-nav.js"></script>

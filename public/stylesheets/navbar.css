@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Krona+One&family=Roboto&family=Ubuntu:wght@500&family=Ropa+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Krona+One&family=Roboto&family=Ubuntu:wght@500&family=Ropa+Sans&family=Noto+Sans+SC&display=swap');
 
 
 body {
@@ -38,7 +38,6 @@ body {
     display: none;
     padding: 0 5px;
     color: #ffffff;
-    box-shadow: 0 0 10px #000;
 }
 
 .expand:hover {

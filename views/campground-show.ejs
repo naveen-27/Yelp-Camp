@@ -1,0 +1,85 @@
+<%- include("partials/header") %> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/campground-show.css">
+
+</head>
+<body>
+
+    <%- include("partials/navbar") %> 
+
+    <div class="container">
+        <div class="sidebar">
+            <!-- <h3 class="cg-name"><%= ground.name %></h3> -->
+            <div class="side-info">
+                <div class="info-heading"><i class="calendar alternate outline icon"></i> Booking Window</div>
+                <div class="info-value">Aug - May</div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="phone icon"></i> Phone</div>
+                <div class="info-value">123-456-789</div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="location arrow icon"></i> Address</div>
+                <div class="info-value">Navalar Nagar, Chepauk, Triplicane, Chennai, Tamil Nadu 600005</div>
+            </div>
+        </div> 
+    
+        <div class="main">
+            <div class="camp">
+                <img src="<%= ground.image %>" alt="Campground">
+                <div class="info">
+                    <span class="name-cost">
+                        <h3 class="name"><%= ground.name %></h3>
+                        <h3>$<%= ground.cost %>/night</h3>
+                    </span>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ullam ipsam commodi dolore tempora alias veritatis nulla eligendi, debitis reprehenderit consequuntur quo aliquam rem quibusdam fuga numquam illum impedit ut! Odit corporis fuga suscipit maxime ratione, cum laborum nisi modi exercitationem? Officia, dolorum ad ab explicabo odio earum corporis similique.</p>
+                    <span class="stars" style="margin-top: 10px;">
+                        <h4>Stars : <%= ground.rating %></h4>
+                        <h4>4 Reviews</h4>
+                    </span>
+                </div>
+            </div>
+
+            <div class="comments">
+                <h1 class="title">
+                    Reviews
+                    <button>Leave a Review</button>
+                </h1>
+                <form action="/campgrounds/<%= ground._id %>/comment/new" method="POST">
+                    <input type="text" name="author" id="name" placeholder="Name" required>
+                    <textarea name="content" id="comment" rows="5"></textarea>
+
+                    <div class="rating-submit">
+                        <span>Rating : </span>
+                        <input type="radio" id="1" name="rating">
+                        <label for="1">1&nbsp;&nbsp;&nbsp;</label>
+
+                        <input type="radio" id="2" name="rating">
+                        <label for="2"> 2&nbsp;&nbsp;&nbsp;</label>
+                        
+                        <input type="radio" id="3" name="rating">
+                        <label for="3"> 3&nbsp;&nbsp;&nbsp;</label>
+
+                        <input type="radio" id="4" name="rating">
+                        <label for="4"> 4&nbsp;&nbsp;&nbsp;</label>
+                        
+                        <input type="radio" id="5" name="rating">
+                        <label for="5"> 5</label>
+                    </div>
+        
+                    <input type="submit" value="Submit">
+                </form>
+        
+                <div class="user-comments">
+                    <% for (let comment of ground.comments) { %>
+                        <p class="comment"><b><%= comment.author %></b> - <%= comment.content %></p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/controller-comment.js"></script>
+
+<%- include("partials/footer") %> 

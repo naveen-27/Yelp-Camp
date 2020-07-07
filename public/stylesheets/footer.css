@@ -9,7 +9,7 @@ footer h3 {
 }
 
 footer {
-    align-self: flex-end;
+    margin-top: auto;
     width: 100%;
 
     background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
