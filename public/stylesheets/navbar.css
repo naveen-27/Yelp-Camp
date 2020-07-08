@@ -64,12 +64,12 @@ body {
 .collapse-links {
     list-style: none;
     background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
-    transition: all 200ms ease-in;
+    transition: max-height 200ms ease-in;
 
     padding: 0 0 1px 0;
     margin: 0;
-    height: 0;
-    display: none;
+    max-height: 121.6px;
+    overflow-y: hidden;
 }
 
 .collapse-links li {
@@ -90,9 +90,8 @@ body {
 
 
 /* Utility classes */
-.show {
-    display: block !important;
-    height: auto;
+.hide {
+    max-height: 0px;
 }
 
 @media screen and (max-width: 800px) {

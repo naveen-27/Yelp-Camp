@@ -143,11 +143,13 @@
 
 form {
     width: 95%;
+    max-height: 200px;
+    overflow-y: hidden;
     margin: 10px auto;
     font-family: "Noto Sans Sc", sans-serif;
     border-bottom: 1px solid rgba(128, 128, 128, 0.596);
 
-    transition: height 200ms ease-in;
+    transition: max-height 200ms ease;
 }
 
 textarea {
@@ -203,6 +205,6 @@ input[type="radio"]:checked {
 }
 
 .hide {
-    visibility: hidden;
-    height: 0 !important;
+    max-height: 0px;
+    border: none;
 }
