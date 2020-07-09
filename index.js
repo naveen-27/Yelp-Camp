@@ -93,7 +93,7 @@ app.get("/campgrounds/:id", (request, response) => {
 });
 
 
-// The serving port & method listening
+// The serving port & method listening for requests
 app.listen(3000, function() {
     console.log("Server Started");
 });

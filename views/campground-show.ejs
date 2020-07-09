@@ -8,7 +8,6 @@
 
     <div class="container">
         <div class="sidebar">
-            <!-- <h3 class="cg-name"><%= ground.name %></h3> -->
             <div class="side-info">
                 <div class="info-heading"><i class="calendar alternate outline icon"></i> Booking Window</div>
                 <div class="info-value">Aug - May</div>
@@ -40,42 +39,52 @@
                     </span>
                 </div>
             </div>
+        </div>
 
-            <div class="comments">
-                <h1 class="title">
-                    Reviews
-                    <button>Leave a Review</button>
-                </h1>
-                <form action="/campgrounds/<%= ground._id %>/comment/new" method="POST" class="hide-addComment">
-                    <input type="text" name="author" id="name" placeholder="Name" required>
-                    <textarea name="content" id="comment" rows="5"></textarea>
+        <div class="comments">
+            <h1 class="title">
+                Reviews
+                <button>Leave a Review</button>
+            </h1>
+            <form action="/campgrounds/<%= ground._id %>/comment/new" method="POST" class="hide-addComment">
+                <input type="text" name="author" id="name" placeholder="Name" required>
+                <textarea name="content" id="comment" rows="5"></textarea>
 
-                    <div class="rating-submit">
-                        <span>Rating : </span>
-                        <input type="radio" id="1" name="rating">
-                        <label for="1">1&nbsp;&nbsp;&nbsp;</label>
+                <div class="rating-submit">
+                    <span>Rating : </span>
+                    <input type="radio" id="1" name="rating">
+                    <label for="1">1&nbsp;&nbsp;</label>
 
-                        <input type="radio" id="2" name="rating">
-                        <label for="2"> 2&nbsp;&nbsp;&nbsp;</label>
-                        
-                        <input type="radio" id="3" name="rating">
-                        <label for="3"> 3&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" id="2" name="rating">
+                    <label for="2">2&nbsp;&nbsp;</label>
+                    
+                    <input type="radio" id="3" name="rating">
+                    <label for="3">3&nbsp;&nbsp;</label>
 
-                        <input type="radio" id="4" name="rating">
-                        <label for="4"> 4&nbsp;&nbsp;&nbsp;</label>
-                        
-                        <input type="radio" id="5" name="rating">
-                        <label for="5"> 5</label>
-                    </div>
-        
-                    <input type="submit" value="Submit">
-                </form>
-        
-                <div class="user-comments">
-                    <% for (let comment of ground.comments) { %>
-                        <p class="comment"><b><%= comment.author %></b> - <%= comment.content %></p>
-                    <% } %>
+                    <input type="radio" id="4" name="rating">
+                    <label for="4">4&nbsp;&nbsp;</label>
+                    
+                    <input type="radio" id="5" name="rating">
+                    <label for="5">5</label>
                 </div>
+    
+                <input type="submit" value="Submit">
+            </form>
+    
+            <div class="user-comments">
+                <% for (let comment of ground.comments) { %>
+                    <div class="comment">
+                        <div class="cmt-head">
+                            <h4>
+                                <img src="https://vignette.wikia.nocookie.net/harrypotter/images/a/ae/Hogwartscrest.png/revision/latest/scale-to-width-down/350?cb=20110806202805" alt="Profile Photo">
+                                &nbsp;&nbsp;
+                                <a href="#"><%= comment.author %></a>
+                            </h4>
+                            <span><span id="given-rating">3 Stars</span> | 2 months ago</span>
+                        </div>
+                        <div class="content"><%= comment.content %></div>
+                    </div>
+                <% } %>
             </div>
         </div>
     </div>
