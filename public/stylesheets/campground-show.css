@@ -27,7 +27,7 @@
     font-family: "Ubuntu", sans-serif;
 }
 
-.sidebar> .side-info:nth-of-type(2) {
+.sidebar > .side-info:nth-of-type(2) {
     margin: 20px 0;
 }
 
@@ -149,7 +149,7 @@ form {
     font-family: "Noto Sans Sc", sans-serif;
     border-bottom: 1px solid rgba(128, 128, 128, 0.596);
 
-    transition: max-height 200ms ease;
+    transition: max-height 300ms linear;
 }
 
 textarea {
@@ -165,7 +165,7 @@ input[type="submit"] {
     background-color: var(--primary);
     color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
     font-family: "Noto Sans SC", sans-serif;
@@ -173,8 +173,8 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
 input[type="radio"] {
@@ -204,7 +204,7 @@ input[type="radio"]:checked {
     font-family: sans-serif;
 }
 
-.hide {
+.hide-addComment {
     max-height: 0px;
     border: none;
 }
