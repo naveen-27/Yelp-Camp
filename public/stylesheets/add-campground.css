@@ -4,7 +4,7 @@
 .new-cg {
     width: min(60%, 400px);
     padding: 2rem 2.5rem;
-    margin: auto auto;
+    margin: 2em auto;
 
     background: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
