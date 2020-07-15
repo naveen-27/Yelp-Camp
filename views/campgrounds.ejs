@@ -2,8 +2,8 @@
     
     <link rel="stylesheet" type="text/css" href="/stylesheets/campsList.css">
     
-    </head>
-    <body>
+</head>
+<body>
 
     <%- include("partials/navbar") %> 
 
@@ -17,7 +17,6 @@
     <div class="lists">
 
         <!-- Add new card for each camp -->
-
         <% for (var i = 0; i < grounds.length; i++) { %>
             <a href="/campgrounds/<%= grounds[i]._id %>">
                 <div class="card">

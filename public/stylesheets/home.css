@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&family=Pacifico&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    
+    background: url("https://images.unsplash.com/reserve/J3URHssSQyqifuJVcgKu_Wald.jpg?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=589423add37e168c0601a481e74569ca&auto=format&fit=crop&w=1950&q=80");
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Merienda One", sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+h1, h4 {
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+
+    text-shadow: 0 0 10px rgb(255, 0, 0);
+}
+
+h1 {
+    font-size: min(60px, 10vw);
+}
+
+h4 {
+    font-size: min(30px, 6vw);
+}
+
+button {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    outline: none;
+
+    border-radius: 25px;
+
+    font-family: "Merienda One", sans-serif;
+    font-size: 18px;
+    background-color: rgb(173, 0, 0);
+    color: white;
+    transition: transform 300ms ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px black;
+    text-shadow: 0 0 3px rgba(153, 205, 50, 0.658);
+}
+
+button:active {
+    opacity: 0.8;
+}

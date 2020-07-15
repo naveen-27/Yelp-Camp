@@ -1,0 +1,59 @@
+<%- include("partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login_signup.css">
+</head>
+<body>
+
+    <%- include("partials/navbar") %> 
+
+    <div class="new-cg">
+        <h1>
+            <span id="login--btn"  class="selected">LOGIN</span>
+            &nbsp;&nbsp;
+            <span id="signup--btn" class="">SIGNUP</span>
+        </h1>
+
+        <form action="/signup" method="POST" id="signup" class="hide">
+            <label for="Name"> Name<sup>*</sup>
+                <input type="text" name="name" id="Name" placeholder="Lionel Messi" required>
+            </label>
+
+            <label for="Avatar"> Avatar
+                <input type="file" name="image" id="Avatar">
+            </label>
+
+            <label for="Email"> Email<sup>*</sup>
+                <input type="text" name="email" id="Email" placeholder="lionel@messi.com" required>
+            </label>
+
+            <label for="Phone"> Phone<sup>*</sup>
+                <input type="text" name="phone" id="Phone" placeholder="9876543210" required>
+            </label>
+
+            <label for="Uname"> Username<sup>*</sup>
+                <input type="text" name="username" id="Uname" placeholder="lionel_messi_10" required>
+            </label>
+
+            <label for="Pwd"> Password<sup>*</sup>
+                <input type="password" name="password" id="Pwd" placeholder="giBbre@(${noTHing}-10)" required>
+            </label>
+
+            <input type="submit" value="Sign Up">
+        </form>
+
+        <form action="/login" method="POST" id="login">
+            <label for="Uname"> Username<sup>*</sup>
+                <input type="text" name="username" id="Uname" placeholder="lionel_messi_10" required>
+            </label>
+
+            <label for="Pwd"> Password<sup>*</sup>
+                <input type="password" name="password" id="Pwd" placeholder="giBbre@(${noTHing}-10)" required>
+            </label>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/scripts/login_signup.js"></script>
+<%- include("partials/footer") %>

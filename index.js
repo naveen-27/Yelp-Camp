@@ -46,12 +46,17 @@ mongoose.connect("mongodb://localhost/yelp_camp", {
     useNewUrlParser: true, 
     useUnifiedTopology: true
 });
-    
+
+
+// =====================
+// Routes
+// =====================
+
+
 // Landing/HomePage route
 app.get("/", (request, response) => {
     response.render("home");
 });
-
 
 // Campgrounds route where all campgrounds are listed
 app.get("/campgrounds", (request, response) => {
@@ -59,9 +64,7 @@ app.get("/campgrounds", (request, response) => {
         if (err) console.log("DataBase Retrival Error");
         else response.render("campgrounds", {grounds: allCamps});
     });
-    
 });
-
 
 // New campground info submit post route
 app.post("/campgrounds", (request, response) => {
@@ -69,7 +72,7 @@ app.post("/campgrounds", (request, response) => {
     response.redirect("/campgrounds");
 });
 
-
+// Comment post route
 app.post("/campgrounds/:id/comment/new", (request, response) => {
     addComment(request.body, request.params.id);
     response.redirect(`/campgrounds/${request.params.id}`);
@@ -81,7 +84,7 @@ app.get("/campgrounds/new", (request, response) => {
     response.render("newCampground");
 });
 
-
+// Campground show route
 app.get("/campgrounds/:id", (request, response) => {
     Campground.findById(request.params.id).populate("comments").exec((err, camp) => {
         if (err) console.log(err);
@@ -89,11 +92,19 @@ app.get("/campgrounds/:id", (request, response) => {
             response.render("campground-show", {ground: camp});
         }
     });
-
 });
 
+// SignIn-SignUp form routes
+app.get("/login", (request, response) => {
+    response.render("sign_in_up");
+});
 
-// The serving port & method listening for requests
+// =====================
+// End routes
+// =====================
+
+
+// Server listen
 app.listen(3000, function() {
     console.log("Server Started");
 });
