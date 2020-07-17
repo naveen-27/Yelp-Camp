@@ -1,10 +1,10 @@
-<%- include("partials/header") %> 
-<link rel="stylesheet" type="text/css" href="/stylesheets/campground-show.css">
+<%- include("../partials/header") %> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/campgroundShow.css">
 
 </head>
 <body>
 
-    <%- include("partials/navbar") %> 
+    <%- include("../partials/navbar") %> 
 
     <div class="container">
         <div class="sidebar">
@@ -52,19 +52,19 @@
 
                 <div class="rating-submit">
                     <span>Rating : </span>
-                    <input type="radio" id="1" name="rating">
+                    <input type="radio" id="1" name="rating" value="1">
                     <label for="1">1&nbsp;&nbsp;</label>
 
-                    <input type="radio" id="2" name="rating">
+                    <input type="radio" id="2" name="rating" value="2">
                     <label for="2">2&nbsp;&nbsp;</label>
                     
-                    <input type="radio" id="3" name="rating">
+                    <input type="radio" id="3" name="rating" value="3">
                     <label for="3">3&nbsp;&nbsp;</label>
 
-                    <input type="radio" id="4" name="rating">
+                    <input type="radio" id="4" name="rating" value="4">
                     <label for="4">4&nbsp;&nbsp;</label>
                     
-                    <input type="radio" id="5" name="rating">
+                    <input type="radio" id="5" name="rating" value="5">
                     <label for="5">5</label>
                 </div>
     
@@ -76,11 +76,11 @@
                     <div class="comment">
                         <div class="cmt-head">
                             <h4>
-                                <img src="https://vignette.wikia.nocookie.net/harrypotter/images/a/ae/Hogwartscrest.png/revision/latest/scale-to-width-down/350?cb=20110806202805" alt="Profile Photo">
+                                <div class="img"><%= comment.username[0].toUpperCase() %></div>
                                 &nbsp;&nbsp;
-                                <a href="#"><%= comment.author %></a>
+                                <a href="/<%= comment.username %>"><%= comment.username %></a>
                             </h4>
-                            <span><span id="given-rating">3 Stars</span> | 2 months ago</span>
+                            <span><span id="given-rating"><%= comment.rating %> Stars</span> | <%= comment.time.toString().slice(4, 15) %></span>
                         </div>
                         <div class="content"><%= comment.content %></div>
                     </div>
@@ -91,4 +91,4 @@
 
     <script src="/scripts/controller-comment.js"></script>
 
-<%- include("partials/footer") %> 
+<%- include("../partials/footer") %> 

@@ -239,11 +239,12 @@ h4 a {
     color: rgb(70, 70, 70);
 }
 
-.cmt-head img {
+.cmt-head .img {
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    padding: 4px 8px;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
+    color: white;
+    background-color: red;
 }
 
 .content {

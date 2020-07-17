@@ -1,11 +1,11 @@
-<%- include("partials/header") %>
+<%- include("../partials/header") %>
     
     <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/login_signup.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/userAuth.css">
 </head>
 <body>
 
-    <%- include("partials/navbar") %> 
+    <%- include("../partials/navbar") %> 
 
     <div class="new-cg">
         <h1>
@@ -16,27 +16,23 @@
 
         <form action="/signup" method="POST" id="signup" class="hide">
             <label for="Name"> Name<sup>*</sup>
-                <input type="text" name="name" id="Name" placeholder="Lionel Messi" required>
-            </label>
-
-            <label for="Avatar"> Avatar
-                <input type="file" name="image" id="Avatar">
+                <input type="text" name="name" id="Name" required>
             </label>
 
             <label for="Email"> Email<sup>*</sup>
-                <input type="text" name="email" id="Email" placeholder="lionel@messi.com" required>
+                <input type="text" name="email" id="Email" required>
             </label>
 
             <label for="Phone"> Phone<sup>*</sup>
-                <input type="text" name="phone" id="Phone" placeholder="9876543210" required>
+                <input type="text" name="phone" id="Phone" required>
             </label>
 
             <label for="Uname"> Username<sup>*</sup>
-                <input type="text" name="username" id="Uname" placeholder="lionel_messi_10" required>
+                <input type="text" name="username" id="Uname" required>
             </label>
 
             <label for="Pwd"> Password<sup>*</sup>
-                <input type="password" name="password" id="Pwd" placeholder="giBbre@(${noTHing}-10)" required>
+                <input type="password" name="password" id="Pwd" required>
             </label>
 
             <input type="submit" value="Sign Up">
@@ -44,11 +40,11 @@
 
         <form action="/login" method="POST" id="login">
             <label for="Uname"> Username<sup>*</sup>
-                <input type="text" name="username" id="Uname" placeholder="lionel_messi_10" required>
+                <input type="text" name="username" id="Uname" required>
             </label>
 
             <label for="Pwd"> Password<sup>*</sup>
-                <input type="password" name="password" id="Pwd" placeholder="giBbre@(${noTHing}-10)" required>
+                <input type="password" name="password" id="Pwd" required>
             </label>
 
             <input type="submit" value="Login">
@@ -56,4 +52,4 @@
     </div>
 
     <script type="text/javascript" src="/scripts/login_signup.js"></script>
-<%- include("partials/footer") %>
+<%- include("../partials/footer") %>

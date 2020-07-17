@@ -24,15 +24,15 @@ var data = [
 
 
 async function seedDB() {
-    let comment;
+    // let comment;
 
-    await Comment.findById("5f03f8a66aa5c2733726ce04", (err, foundComment) => {
-        if (err) console.log(err);
-        else {
-            comment = foundComment;
-            console.log("Comment Found");
-        }
-    });
+    // await Comment.findById("5f11bd7ffe990b2af46d3954", (err, foundComment) => {
+    //     if (err) console.log(err);
+    //     else {
+    //         comment = foundComment;
+    //         console.log("Comment Found");
+    //     }
+    // });
 
     await Campground.deleteMany({}, (err) => {
         if (err) console.log(err);
@@ -41,12 +41,7 @@ async function seedDB() {
 
     for (let camp of data) {
         Campground.create(camp).then((ground) => {
-            ground.comments.push(comment._id);
-            ground.save().then(() => {
-                console.log("Campground Created");
-            }).catch((err) => {
-                console.log(err);
-            });
+            console.log("Campground Created");
         });
     }
 }
