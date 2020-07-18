@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+    
+    <div class="new-cg">
+        <h1>EDIT CAMPGROUND</h1>
+
+        <form action="/campgrounds/<%= ground._id %>?_method=PUT" method="POST">
+            <label for="CGname"> Campground Name 
+                <input type="text" name="campground[name]" id="CGname" value="<%= ground.name %>" required>
+            </label>
+
+            <label for="imageUrl"> Campground Image
+                <input type="text" name="campground[image]" id="imageUrl" value="<%= ground.image %>" required>
+            </label>
+
+            <label for="rate"> Pricing
+                <input type="text" name="campground[cost]" id="rate" value="<%= ground.cost %>" required>
+            </label>
+
+            <label for="stars"> Rating
+                <input type="text" name="campground[rating]" id="stars" value="<%= ground.rating %>" required>
+            </label>
+
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+
+<%- include("../partials/footer") %> 

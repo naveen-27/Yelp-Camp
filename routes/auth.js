@@ -19,7 +19,7 @@ const express  = require("express"),
 
 // SignIn-SignUp form routes
 router.get("/login", (request, response) => {
-    response.render("user/authForms", {user: request.user});
+    response.render("user/authForms", {currentuser: request.user});
 });
 
 // SignUp post route
@@ -58,7 +58,10 @@ router.get("/logout", (request, response) => {
 
 // User show route
 router.get("/:user", (request, response) => {
-    response.render("user/userShow", {user: request.user});
+    User.findOne({username: request.params.user}).populate("campgroundsAdded").exec((err, foundUser) => {
+        response.render("user/userShow", {user: foundUser, currentUser: request.user});
+    });
+    
 });
 
 

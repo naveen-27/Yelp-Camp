@@ -37,6 +37,15 @@
                         <h4>Rating : <%= ground.rating %></h4>
                         <h4>4 Reviews</h4>
                     </span>
+
+                    <% if (currentUser !== undefined && ground.owner === currentUser.username) { %>
+                        <span class="ud">
+                            <a href="/campgrounds/<%= ground._id %>/edit"><button style="background-color: goldenrod;">Edit</button></a>
+                            <form action="/campgrounds/<%= ground._id %>?_method=DELETE" method="POST" id="form--btn">
+                                <input type="submit" style="background-color: crimson;" value="Delete">
+                            </form>
+                        </span>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -46,8 +55,7 @@
                 Reviews
                 <button>Leave a Review</button>
             </h1>
-            <form action="/campgrounds/<%= ground._id %>/comment/new" method="POST" class="hide-addComment">
-                <!-- <input type="text" name="author" id="name" placeholder="Name" required> -->
+            <form action="/campgrounds/<%= ground._id %>/comment/new" method="POST" class="hide-addComment" id="new-comment">
                 <textarea name="content" id="comment" rows="5" required></textarea>
 
                 <div class="rating-submit">

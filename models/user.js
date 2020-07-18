@@ -9,7 +9,11 @@ const userSchema = mongoose.Schema({
     joined: {
         type: Date,
         default: Date.now
-    }
+    },
+    campgroundsAdded: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Campground"
+    }]
 });
 
 userSchema.plugin(passportLocalMongoose);

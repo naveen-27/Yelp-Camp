@@ -143,14 +143,20 @@
 }
 
 form {
-    width: 95%;
     max-height: 300px;
     overflow-y: hidden;
+}
+
+#new-comment {
+    width: 95%;
     margin: 10px auto;
     font-family: "Noto Sans Sc", sans-serif;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.596);
 
     transition: max-height 300ms linear;
+}
+
+.title + form {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.596);
 }
 
 textarea {
@@ -162,7 +168,38 @@ textarea {
     margin: 10px 0;
 }
 
-input[type="submit"] {
+.ud {
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-end;
+}
+
+#form--btn {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#form--btn input,
+.ud button {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-family: "Noto Sans SC", sans-serif;
+}
+
+#form--btn input:hover,
+.ud button:hover {
+    cursor: pointer;
+}
+
+#form--btn input:active,
+.ud button:active {
+    opacity: 0.8;
+}
+
+#new-comment > input[type="submit"] {
     background-color: var(--primary);
     color: #fff;
     border: none;
@@ -173,7 +210,7 @@ input[type="submit"] {
     transition: transform 250ms ease-out;
 }
 
-input[type="submit"]:hover {
+#new-comment > input[type="submit"]:hover {
     transform: translateX(8px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }

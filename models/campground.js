@@ -6,6 +6,7 @@ const campSchema = mongoose.Schema({
     cost: Number,
     rating: Number,
     comments: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' } ],
+    owner: String,
 });
 
 module.exports = mongoose.model("Campground", campSchema);

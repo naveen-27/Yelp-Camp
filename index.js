@@ -5,6 +5,7 @@ const express               = require("express"),
       mongoose              = require("mongoose"),
       local                 = require("passport-local"),
       passport              = require("passport"),
+      methodOverride        = require("method-override"),
       User                  = require("./models/user");
     //   seedDB                = require("./seedDB");
 
@@ -18,11 +19,13 @@ const campgroundRoutes = require("./routes/campgrounds"),
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(parser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 
 mongoose.connect("mongodb://localhost/yelp_camp", {
     useNewUrlParser: true, 
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 
