@@ -3,11 +3,12 @@
 
         <ul class="links">
             <li><a href="/campgrounds/new">ADD&nbsp;CAMP</a></li>
-            <li><a href="#">ABOUT</a></li>
+        <a href="/campgrounds"><li>HOME</li></a>
+        <a href="#"><li>ABOUT</li></a>
             <% if (currentUser !== undefined) { %>
-                <li><a href="/<%= currentUser.username %>"><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></a></li>
+                <a href="/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
             <% } else { %> 
-                <li><a href="/login">LOGIN/SIGNUP</a></l1>
+                <a href="/login"><li>LOGIN/SIGNUP</l1></a>
             <% } %>
         </ul>
         <span class="expand"><i class="align justify icon small" style="margin: 0;"></i></span>
@@ -15,6 +16,7 @@
     <ul class="collapse-links hide-nav">
         <a href="/campgrounds/new"><li>ADD&nbsp;CAMP</li></a>
         <a href="#"><li>ABOUT</li></a>
+        <a href="/campgrounds"><li>HOME</li></a>
         <% if (currentUser !== undefined) { %>
             <a href="/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
         <% } else { %> 
