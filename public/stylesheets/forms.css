@@ -2,7 +2,7 @@
 
 /* Form card */
 .new-cg {
-    width: min(60%, 400px);
+    width: min(60%, 500px);
     padding: 2rem;
     margin: 2em auto;
 
@@ -32,6 +32,15 @@ input {
     font-family: "Ubuntu", sans-serif;
     font-size: 15px;
     color: rgb(66, 66, 66);
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    margin: 15px 0;
+    height: 5rem;
+    border: none;
+    outline: 2px solid #7B061A;
 }
 
 label {
@@ -64,5 +73,11 @@ input[type="submit"]:hover {
 
 input[type="submit"]:active {
     transform: translateY(1px);
+}
+
+.new-cg a {
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 16px;
+    color: purple;
 }
 /* Form card ends */
