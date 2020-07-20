@@ -20,6 +20,29 @@ function formatAddress(address) {
     return `https://www.google.com/maps/embed/v1/place?key=AIzaSyDyV8grOSb_vfPrEynVo44jW-yqGkqOKz0&q=${address}`;
 }
 
+function searchCamp(name, response) {
+    name = name.search.toLowerCase();
+    var foundCamps = [];
+    Campground.find({}, (err, camps) => {
+        if (err) {
+            console.log(err);
+            return [];
+        } else {
+            camps.forEach((camp) => {
+                if (camp.name.toLowerCase().includes(name)) {
+                    foundCamps.push(camp);
+                }
+            });
+
+            if (foundCamps === []) {
+                response.redirect("/campgrounds");
+            } else {
+                response.render("campground/campgrounds", {grounds: foundCamps});
+            }
+        }
+    });
+}
+
 
 // Main Function
 const express    = require("express"),
@@ -57,6 +80,11 @@ router.get("/campgrounds/new", middleware.isLoggedIn, (request, response) => {
 router.post("/campgrounds", middleware.isLoggedIn, (request, response) => {
     addCampground(request.body.campground, request.user);
     response.redirect("/campgrounds");
+});
+
+// Search campground route
+router.get("/campgrounds/q", (request, response) => {
+    foundCamps = searchCamp(request.query, response);
 });
 
 // Campground show route
