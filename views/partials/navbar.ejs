@@ -24,3 +24,11 @@
     </ul>
 
     <script src="/scripts/controller-nav.js"></script>
+
+    <% if (error[0] !== undefined) { %>
+        <div class="flash error"><%= error %></div>
+    <% } %>
+
+    <% if (success[0] !== undefined) { %>
+        <div class="flash success"><%= success %></div>
+    <% } %>
