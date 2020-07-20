@@ -1,16 +1,7 @@
-function isLoggedIn(request, response, next) {
-    if (request.isAuthenticated()) {
-        return next();
-    }
-    response.redirect("/login");
-}
-
-
-// Main Function
-const express  = require("express"),
-      router   = express.Router(),
-      passport = require("passport"),
-      User     = require("../models/user");
+const express    = require("express"),
+      router     = express.Router(),
+      passport   = require("passport"),
+      User       = require("../models/user");
 
 // =======
 // Routes
@@ -34,8 +25,8 @@ router.post("/signup", (request, response) => {
     }),request.body.password, (err, createdUser) => {
 
         if (err) {
-            console.log(err);
-            return response.redirect("/");
+            request.flash("error", err.message);
+            return response.redirect("back");
         }
         passport.authenticate("local")(request, response, () => {
             response.redirect("/campgrounds");
@@ -53,7 +44,7 @@ router.post("/login", passport.authenticate("local",
 // Logout route
 router.get("/logout", (request, response) => {
     request.logout();
-    response.redirect("/");
+    response.redirect("/campgrounds");
 });
 
 // User show route

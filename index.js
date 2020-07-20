@@ -1,13 +1,13 @@
 // MAIN FUNCTION 
 // Dependencies
-const express               = require("express"),
-      parser                = require("body-parser"),
-      mongoose              = require("mongoose"),
-      local                 = require("passport-local"),
-      passport              = require("passport"),
-      methodOverride        = require("method-override"),
-      User                  = require("./models/user");
-    //   seedDB                = require("./seedDB");
+const express        = require("express"),
+      parser         = require("body-parser"),
+      mongoose       = require("mongoose"),
+      local          = require("passport-local"),
+      passport       = require("passport"),
+      methodOverride = require("method-override"),
+      User           = require("./models/user"),
+      flash          = require("connect-flash");
 
 const app = express();
 
@@ -15,12 +15,12 @@ const campgroundRoutes = require("./routes/campgrounds"),
       authRoutes       = require("./routes/auth"),
       commentRoutes    = require("./routes/comments");
 
-// seedDB();
+
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(parser.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
-
+app.use(flash());
 
 mongoose.connect("mongodb://localhost/yelp_camp", {
     useNewUrlParser: true, 
@@ -47,6 +47,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(request, response, next){
     response.locals.currentUser = request.user;
+    response.locals.error = request.flash("error");
+    response.locals.success = request.flash("success");
     next();
 });
 

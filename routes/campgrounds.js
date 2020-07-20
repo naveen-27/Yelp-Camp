@@ -1,23 +1,23 @@
 function addCampground(CampPost, user) {
-    new Campground({
-        name: CampPost.name,
-        image: CampPost.image,
-        cost: CampPost.cost,
-        rating: CampPost.rating,
-        owner: user.username
-    }).save().then((ground) => {
+    CampPost.owner = user.username;
+
+    Campground.create(CampPost).then((ground) => {
         User.findById(user._id, (err, foundUser) => {
             foundUser.campgroundsAdded.push(ground._id);
             foundUser.save();
-        })
+        });
     });
 }
 
-function isLoggedIn(request, response, next) {
-    if (request.isAuthenticated()) {
-        return next();
+function formatAddress(address) {
+    var ar = address.split(",");
+
+    for (var i = 0; i < ar.length; i++) {
+        ar[i] = ar[i].trim().replace(" ", "+");
     }
-    response.redirect("/login");
+    address = ar.join();
+
+    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyDyV8grOSb_vfPrEynVo44jW-yqGkqOKz0&q=${address}`;
 }
 
 
@@ -26,7 +26,8 @@ const express    = require("express"),
       router     = express.Router(),
       User       = require("../models/user"),
       Campground = require("../models/campground"),
-      Comment    = require("../models/comment");
+      Comment    = require("../models/comment"),
+      middleware = require("../middleware");
 
 
 // =======
@@ -39,55 +40,58 @@ router.get("/", (request, response) => {
     response.render("generic/landing");
 });
 
-// Campgrounds route where all campgrounds are listed
+// Campgrounds list route
 router.get("/campgrounds", (request, response) => {
     Campground.find({}, (err, allCamps) => {
-        if (err) console.log("DataBase Retrival Error");
+        if (err || !allCamps) response.redirect("/");
         else response.render("campground/campgrounds", {grounds: allCamps, currentUser: request.user});
     });
 });
 
-// New campground info submit post route
-router.post("/campgrounds", (request, response) => {
-    addCampground(request.body, request.user);
-    response.redirect("/campgrounds");
+// Camgground add form route
+router.get("/campgrounds/new", middleware.isLoggedIn, (request, response) => {
+    response.render("campground/campgroundNew", {currentUser: request.user});
 });
 
-// Route to add new campground using form 
-router.get("/campgrounds/new", isLoggedIn, (request, response) => {
-    response.render("campground/campgroundNew", {currentUser: request.user});
+// campground add post route
+router.post("/campgrounds", middleware.isLoggedIn, (request, response) => {
+    addCampground(request.body.campground, request.user);
+    response.redirect("/campgrounds");
 });
 
 // Campground show route
 router.get("/campgrounds/:id", (request, response) => {
     Campground.findById(request.params.id).populate("comments").exec((err, camp) => {
-        if (err) console.log(err);
-        else {
-            response.render("campground/campgroundShow", {ground: camp, currentUser: request.user});
+        if (err || !camp) {
+            request.flash("error", "Requested Campground Not Found");
+            response.redirect("/campgrounds");
+        } else {
+            let src = formatAddress(camp.location);
+            response.render("campground/campgroundShow", {ground: camp, currentUser: request.user, link: src});
         }
     });
 });
 
 // Campground edit-get route
-router.get("/campgrounds/:id/edit", (request, response) => {
+router.get("/campgrounds/:id/edit", middleware.isAuthorisedCamp, (request, response) => {
     Campground.findById(request.params.id, (err, foundCamp) => {
-        if (err) response.redirect("/campgrounds");
-        else {
-            response.render("campground/campgroundEdit", {ground: foundCamp});
-        }
+        response.render("campground/campgroundEdit", {ground: foundCamp});
     });
 });
 
 // Campground edit-put route
-router.put("/campgrounds/:id", (request, response) => {
+router.put("/campgrounds/:id", middleware.isAuthorisedCamp, (request, response) => {
     Campground.findByIdAndUpdate(request.params.id, request.body.campground, (err, foundCamp) => {
         if (err) response.redirect("/campgrounds");
-        else response.redirect(`/campgrounds/${request.params.id}`);
+        else {
+            request.flash("success", "Campground Editted");
+            response.redirect(`/campgrounds/${request.params.id}`);
+        }
     });
 });
 
 // Campground delete route
-router.delete("/campgrounds/:id", (request, response) => {
+router.delete("/campgrounds/:id", middleware.isAuthorisedCamp, (request, response) => {
     Campground.findById(request.params.id, (err, foundCamp) => {
         for (var comment of foundCamp.comments) {
             Comment.findByIdAndDelete(comment);
