@@ -3,10 +3,19 @@ const mongoose = require("mongoose");
 const campSchema = mongoose.Schema({
     name: String,
     image: String,
+    description: String,
     cost: Number,
-    rating: Number,
+    bookingStart: String,
+    bookingClose: String,
+    contact: String,
+    location: String,
+    amenities: String,
     comments: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' } ],
-    owner: String,
+    rating: {
+        type: Number,
+        default: 0
+    },
+    owner: String
 });
 
 module.exports = mongoose.model("Campground", campSchema);

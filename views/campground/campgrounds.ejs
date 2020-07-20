@@ -26,7 +26,11 @@
                             <span><%= grounds[i].name %></span>
                             <span>$<%= grounds[i].cost %></span>
                         </div>
-                        <span class="rating"><%= grounds[i].rating %> Stars</span>
+                        <% if (grounds[i].comments.length > 0) { %>
+                            <span class="rating"><%= Math.round(grounds[i].rating / grounds[i].comments.length) %> Stars</span>
+                        <% } else { %>
+                            <span class="rating">0 Stars</span>
+                        <% } %>
                     </div>
                 </div>
             </a>

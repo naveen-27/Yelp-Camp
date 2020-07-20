@@ -10,17 +10,31 @@
         <div class="sidebar">
             <div class="side-info">
                 <div class="info-heading"><i class="calendar alternate outline icon"></i> Booking Window</div>
-                <div class="info-value">Aug - May</div>
+                <div class="info-value"><%= ground.bookingStart %> - <%= ground.bookingClose %></div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="location arrow icon"></i> 
+                    Location
+                    <br><br>
+                    <%= ground.location %>
+                </div>
+                <iframe
+                    width="99.9%"
+                    height="150"
+                    frameborder="0" style="border:0"
+                    src="<%= link %>">
+                </iframe>
             </div>
 
             <div class="side-info">
                 <div class="info-heading"><i class="phone icon"></i> Phone</div>
-                <div class="info-value">123-456-789</div>
+                <div class="info-value"><%= ground.contact %></div>
             </div>
 
             <div class="side-info">
-                <div class="info-heading"><i class="location arrow icon"></i> Address</div>
-                <div class="info-value">Navalar Nagar, Chepauk, Triplicane, Chennai, Tamil Nadu 600005</div>
+                <div class="info-heading"><i class="quidditch icon"></i> Amenities</div>
+                <div class="info-value"><%= ground.amenities %></div>
             </div>
         </div> 
     
@@ -32,15 +46,20 @@
                         <h3 class="name"><%= ground.name %></h3>
                         <h3>$<%= ground.cost %>/night</h3>
                     </span>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia ullam ipsam commodi dolore tempora alias veritatis nulla eligendi, debitis reprehenderit consequuntur quo aliquam rem quibusdam fuga numquam illum impedit ut! Odit corporis fuga suscipit maxime ratione, cum laborum nisi modi exercitationem? Officia, dolorum ad ab explicabo odio earum corporis similique.</p>
+                    <p><%= ground.description %></p>
                     <span class="stars" style="margin-top: 10px;">
-                        <h4>Rating : <%= ground.rating %></h4>
-                        <h4>4 Reviews</h4>
+                        <% if (ground.comments.length > 0) { %>
+                            <h4>Rating : <%= Math.round(ground.rating / ground.comments.length) %></h4>
+                        <% } else { %>
+                            <h4>Rating : 0</h4>
+                        <% } %>
+                        <h4><%= ground.comments.length %> Reviews</h4>
                     </span>
 
                     <% if (currentUser !== undefined && ground.owner === currentUser.username) { %>
                         <span class="ud">
-                            <a href="/campgrounds/<%= ground._id %>/edit"><button style="background-color: goldenrod;">Edit</button></a>
+                            <a href="/campgrounds/<%= ground._id %>/edit"><button style="background-color: rgb(199, 151, 29);">Edit</button></a>
+                            
                             <form action="/campgrounds/<%= ground._id %>?_method=DELETE" method="POST" id="form--btn">
                                 <input type="submit" style="background-color: crimson;" value="Delete">
                             </form>
@@ -80,6 +99,7 @@
             </form>
     
             <div class="user-comments">
+                <% var cnt = 0 %>
                 <% for (let comment of ground.comments) { %>
                     <div class="comment">
                         <div class="cmt-head">
@@ -88,9 +108,48 @@
                                 &nbsp;&nbsp;
                                 <a href="/<%= comment.username %>"><%= comment.username %></a>
                             </h4>
-                            <span><span id="given-rating"><%= comment.rating %> Stars</span> | <%= comment.time.toString().slice(4, 15) %></span>
+                            <span style="display: flex;">
+                                <% var edit = false %>
+                                <% if (currentUser !== undefined && comment.author.equals(currentUser._id)) { %>
+                                    <% edit = true %>
+                                    <span class="cmt-controls" style="margin-right: 10px; display: flex; align-items: center;">
+                                        <i class="edit icon" style="color: #000; margin-right: 10px;"></i>
+                                        <form action="/campgrounds/<%= ground._id %>/comment/<%= comment._id %>/delete?_method=DELETE" method="POST" id="del">
+                                            <button><i class="trash icon" style="color: #000;"></i></button>
+                                        </form>
+                                    </span>
+                                <% } %>
+                                <span id="given-rating"><%= comment.rating %> Stars</span>&nbsp;|&nbsp;<%= comment.time.toString().slice(4, 15) %>
+                            </span>
                         </div>
                         <div class="content"><%= comment.content %></div>
+
+                        <% if (edit) {%>
+                            <form action="/campgrounds/<%= ground._id %>/comment/<%= comment._id %>?_method=PUT" method="POST" class="hide-addComment" id="edit-comment" data-cmtNo="<%= cnt %>">
+                                <textarea name="content" id="e-cmt" rows="5" required><%= comment.content %></textarea>
+                
+                                <div class="rating-submit">
+                                    <span>Rating : </span>
+                                    <input type="radio" id="1" name="rating" value="1">
+                                    <label for="1">1&nbsp;&nbsp;</label>
+                
+                                    <input type="radio" id="2" name="rating" value="2">
+                                    <label for="2">2&nbsp;&nbsp;</label>
+                                    
+                                    <input type="radio" id="3" name="rating" value="3">
+                                    <label for="3">3&nbsp;&nbsp;</label>
+                
+                                    <input type="radio" id="4" name="rating" value="4">
+                                    <label for="4">4&nbsp;&nbsp;</label>
+                                    
+                                    <input type="radio" id="5" name="rating" value="5">
+                                    <label for="5">5</label>
+                                </div>
+                    
+                                <input type="submit" value="Edit" style="background-color: purple; margin-bottom: 0;">
+                            </form>
+                            <% cnt++ %>
+                        <% } %>
                     </div>
                 <% } %>
             </div>
