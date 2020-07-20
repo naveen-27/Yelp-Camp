@@ -11,10 +11,11 @@
 }
 
 .sidebar {
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    grid-row: 1 / 3;
 }
 
 .side-info {
