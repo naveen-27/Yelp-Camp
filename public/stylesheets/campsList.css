@@ -43,7 +43,7 @@
 
 /* Campgrounds List */
 .lists {
-    padding: 3rem 15%;
+    padding: 2rem 15%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -100,14 +100,14 @@
 /* Smaller screens -> reducing the columns count */
 @media(max-width: 1000px) {
     .lists {
-        padding: 5rem 10%;
+        padding: 2rem 10%;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media(max-width: 800px) {
     .lists {
-        padding: 5rem 7%;
+        padding: 2rem 7%;
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -122,7 +122,7 @@
 
 @media screen and (max-width: 550px) {
     .lists {
-        padding: 5rem 20%;
+        padding: 2rem 20%;
         grid-template-columns: 1fr;
     }
 }
@@ -138,7 +138,7 @@
     }
 
     .lists {
-        padding: 5rem 8%;
+        padding: 2rem 8%;
     }
 
     .heading h1 {
