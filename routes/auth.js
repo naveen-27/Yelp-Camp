@@ -48,11 +48,10 @@ router.get("/logout", (request, response) => {
 });
 
 // User show route
-router.get("/:user", (request, response) => {
+router.get("/users/:user", (request, response) => {
     User.findOne({username: request.params.user}).populate("campgroundsAdded").exec((err, foundUser) => {
         response.render("user/userShow", {user: foundUser, currentUser: request.user});
     });
-    
 });
 
 

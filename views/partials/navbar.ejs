@@ -6,7 +6,7 @@
         <a href="/campgrounds"><li>HOME</li></a>
         <a href="#"><li>ABOUT</li></a>
             <% if (currentUser !== undefined) { %>
-                <a href="/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
+                <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
             <% } else { %> 
                 <a href="/login"><li>LOGIN/SIGNUP</l1></a>
             <% } %>
@@ -18,7 +18,7 @@
         <a href="#"><li>ABOUT</li></a>
         <a href="/campgrounds"><li>HOME</li></a>
         <% if (currentUser !== undefined) { %>
-            <a href="/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
+            <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
         <% } else { %> 
             <a href="/login"><li>LOGIN/SIGNUP</li></a>
         <% } %>
