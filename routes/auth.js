@@ -51,7 +51,12 @@ router.get("/logout", (request, response) => {
 // User show route
 router.get("/users/:user", (request, response) => {
     User.findOne({username: request.params.user}).populate("campgroundsAdded").exec((err, foundUser) => {
-        response.render("user/userShow", {user: foundUser, currentUser: request.user});
+        if (err || !foundUser) {
+            request.flash("error", "No user found");
+            return response.redirect("/campgrounds");
+        }
+        const {campgroundsAdded} = foundUser;
+        response.render("user/userShow", {user: foundUser, currentUser: request.user, grounds: campgroundsAdded});
     });
 });
 
