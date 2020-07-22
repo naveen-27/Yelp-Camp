@@ -1,5 +1,7 @@
 const Comment    = require("../models/comment"),
+      User       = require("../models/user"),
       Campground = require("../models/campground"); 
+const user = require("../models/user");
 
 const middleware = {
 
@@ -48,6 +50,30 @@ const middleware = {
             request.flash("error", "You have to be logged in to do that");
             response.redirect(`/campgrounds/${request.params.id}`);
         }
+    },
+
+    // user authorisation for account
+    isAuthorisedUser: function(request, response, next) {
+
+        if (request.user === undefined) {
+            request.flash("error", "You have to be logged in first");
+            response.redirect("/campgrounds");
+            return;
+        }
+
+        User.findOne({username: request.params.user}, (err, foundUser) => {
+            if (err || !foundUser) {
+                request.flash("error", "No User found");
+                response.redirect("/campgrounds");
+            } else {
+
+                if (request.user._id.equals(foundUser._id)) {
+                    return next();
+                }
+                request.flash("error", `You are not ${foundUser.name}`);
+                response.redirect("/campgrounds");
+            }
+        });
     }
 }
 

@@ -1,7 +1,8 @@
 const express    = require("express"),
       router     = express.Router(),
       passport   = require("passport"),
-      User       = require("../models/user");
+      User       = require("../models/user"),
+      middleware = require("../middleware");
 
 // =======
 // Routes
@@ -51,6 +52,27 @@ router.get("/logout", (request, response) => {
 router.get("/users/:user", (request, response) => {
     User.findOne({username: request.params.user}).populate("campgroundsAdded").exec((err, foundUser) => {
         response.render("user/userShow", {user: foundUser, currentUser: request.user});
+    });
+});
+
+// User edit get route
+router.get("/users/:user/edit", middleware.isAuthorisedUser, (request, response) => {
+    User.findOne({username: request.params.user}, (err, foundUser) => {
+        if (err) response.redirect("back");
+        else {
+            response.render("user/userEdit", {foundUser: foundUser});
+        }
+    });
+});
+
+// User edit post route
+router.put("/users/:user", middleware.isAuthorisedUser, (request, response) => {
+    User.findOneAndUpdate({username: request.params.user}, request.body.user, (err, foundUser) => {
+        if (err) response.redirect("back");
+        else {
+            request.flash("success", "Updated Info");
+            response.redirect(`/users/${foundUser.username}`);
+        }
     });
 });
 
