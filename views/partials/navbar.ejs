@@ -4,7 +4,6 @@
         <ul class="links">
             <li><a href="/campgrounds/new">ADD&nbsp;CAMP</a></li>
         <a href="/campgrounds"><li>HOME</li></a>
-        <a href="#"><li>ABOUT</li></a>
             <% if (currentUser !== undefined) { %>
                 <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
             <% } else { %> 
@@ -15,7 +14,6 @@
     </nav>
     <ul class="collapse-links hide-nav">
         <a href="/campgrounds/new"><li>ADD&nbsp;CAMP</li></a>
-        <a href="#"><li>ABOUT</li></a>
         <a href="/campgrounds"><li>HOME</li></a>
         <% if (currentUser !== undefined) { %>
             <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
