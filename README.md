@@ -14,8 +14,8 @@ Visit => https://yelpcamp2020-v1.herokuapp.com/
 3. Create, Read, Update, Delete (CRUD) is availabe for the below mentioned:
     1. Campgrounds
     2. Users
-    3. Comments
-4. Session of users logged in will be maintained for seemless usability.
+    3. Reviews/Comments
+4. Session of users logged in will be maintained for seemless useability.
 5. Custom written middleware takes care of illegal access of privately owned data/permissions <br>
    by the user so that only ***Authenticated and Authorised Users*** have access to them.
 6. Seaching Campgrounds by fizzy search.
