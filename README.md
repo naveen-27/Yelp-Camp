@@ -49,5 +49,5 @@ git clone https://github.com/naveen-27/Yelp-Camp.git
 cd Yelp-Camp
 npm install
 ```
-Then run ```mongod``` and ```node index.js``` in seperate terminals.
+Then run ```mongod``` and ```node index.js``` in seperate terminals. <br>
 Go to localhost:3000
