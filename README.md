@@ -1,10 +1,4 @@
 # Yelp-Camp
-<hr>
-  
-Yelp Camp is a campground reviewing app where the owners can post their campgrounds for reviewing <br>
-from the users of the app. This full stack application is made as a part of the <br>
-Web Developer Bootcamp course by Colt Steele.
-# Yelp-Camp
   
 Yelp Camp is a campground reviewing app where the owners can post their campgrounds for reviewing <br>
 from the users of the app. This full stack application is made as a part of the <br>
