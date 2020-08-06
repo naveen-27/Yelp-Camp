@@ -1,7 +1,6 @@
 const Comment    = require("../models/comment"),
       User       = require("../models/user"),
-      Campground = require("../models/campground"); 
-const user = require("../models/user");
+      Campground = require("../models/campground");
 
 const middleware = {
 
